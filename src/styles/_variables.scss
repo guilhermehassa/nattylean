@@ -1,0 +1,117 @@
+// Colors
+$primary: #0d6efd;
+$secondary: #6c757d;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #212529;
+
+// Typography
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base: $font-family-sans-serif;
+$font-size-root: null;
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * .875;
+$font-size-lg: $font-size-base * 1.25;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+// Radius
+$border-radius: 0.375rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-radius-xl: 1rem;
+$border-radius-xxl: 2rem;
+
+// Containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Body
+$body-bg: #fff;
+$body-color: #212529;
+
+// Links
+$link-color: $primary;
+$link-decoration: underline;
+$link-hover-color: #0a58ca;
+$link-hover-decoration: null;
+
+// Components
+$border-width: 1px;
+$border-style: solid;
+$border-color: #dee2e6;
+
+$box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+$box-shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175);
+$box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, .075);
+
+// Buttons
+$btn-padding-y: .375rem;
+$btn-padding-x: .75rem;
+$btn-font-family: null;
+$btn-font-size: $font-size-base;
+$btn-line-height: $line-height-base;
+$btn-white-space: null;
+
+$btn-padding-y-sm: .25rem;
+$btn-padding-x-sm: .5rem;
+$btn-font-size-sm: $font-size-sm;
+
+$btn-padding-y-lg: .5rem;
+$btn-padding-x-lg: 1rem;
+$btn-font-size-lg: $font-size-lg;
+
+$btn-border-width: $border-width;
+$btn-font-weight: $font-weight-normal;
+$btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+$btn-focus-width: .25rem;
+$btn-focus-box-shadow: 0 0 0 $btn-focus-width rgba(mix($primary, $body-color, 15%), .5);
+$btn-disabled-opacity: .65;
+$btn-active-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);

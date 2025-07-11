@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Modern App</title>
+  <!-- Bootstrap agora está compilado no main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-4 text-primary mb-4">BOOTSTRAP PERSONALIZADO</h1>
+        <p class="test-css">Esta linha deveria ter fundo vermelho se o CSS local funciona</p>
+        <p class="lead">Agora estamos usando Bootstrap compilado localmente com variáveis personalizadas!</p>
+        <div class="alert alert-success" role="alert">
+          <strong>Sucesso!</strong> Se você vê este alerta verde, o Bootstrap está funcionando!
+        </div>
+        <button class="btn btn-primary me-2 custom-btn">Botão Primário</button>
+        <button class="btn btn-secondary me-2 custom-btn">Botão Secundário</button>
+        <button class="btn btn-success custom-btn">Botão Sucesso</button>
+        
+        <div class="mt-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card do Bootstrap</h5>
+              <p class="card-text">Se este card está estilizado, o Bootstrap está funcionando corretamente.</p>
+              <a href="#" class="btn btn-primary">Ir para algum lugar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
