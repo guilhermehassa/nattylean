@@ -3,9 +3,10 @@
 @import 'mixins';
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import 'video';
+@import 'offers';
+
 
 .vsl{
-
   .arrow{
     position: relative;
     &::after, &:before{
@@ -39,7 +40,6 @@
 
   .countdown{
     background-color: $secondary-dark;
-
     &_display{
       width: 180px;
       text-align: center;
@@ -47,5 +47,4 @@
       border-radius: 20px;
     }
   }
-
 }

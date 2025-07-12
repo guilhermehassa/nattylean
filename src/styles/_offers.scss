@@ -1,0 +1,129 @@
+// Estilos dos cards de oferta
+  .offer-card {
+    box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+    border-radius: 18px;
+    border: none;
+    background: #f7fcff;
+    padding: 2rem 1rem 1.5rem 1rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include media-breakpoint-down(md){
+      transform: none;
+      min-height: 0;
+      margin-bottom: 2rem;
+    }
+    .img-fluid {
+      max-width: 120px;
+      margin-bottom: 1rem;
+    }
+    h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #222;
+    }
+    ul {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      li {
+        margin-bottom: 0.2rem;
+        color: #444;
+      }
+    }
+    .offer-card__price {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 0.2rem;
+      line-height: 1;
+      span {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #666;
+      }
+    }
+    .offer-card__save {
+      font-size: 1.1rem;
+      color: $primary;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      &::before {
+        content: "\2714";
+        color: $primary;
+        font-size: 1.2em;
+      }
+    }
+    .offer-card__guarantee {
+      font-size: 1rem;
+      color: #222;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      &::before {
+        content: "\1F512";
+        font-size: 1.1em;
+        color: #222;
+      }
+    }
+    .offer-card__btn {
+      background: #e2e614;
+      color: #222;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      padding: 0.7em 0;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: background 0.2s, color 0.2s;
+      &:hover {
+        background: $primary;
+        color: #111;
+      }
+    }
+    .offer-card__total {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 0.2rem;
+      span {
+        color: $primary;
+        font-weight: 700;
+      }
+    }
+    .offer-card__shipping {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $primary;
+      margin-bottom: 0.2rem;
+    }
+    .offer-card__payment {
+      margin-top: 0.5rem;
+      img {
+        max-height: 22px;
+        margin: 0 2px;
+      }
+    }
+  }
+
+  .offer-card--best {
+    background: linear-gradient(180deg, #e0f7f4 0%, #c2f2e9 100%);
+    border: 2.5px solid $primary;
+    box-shadow: 0 10px 40px rgba(27,189,27,0.12);
+    z-index: 2;
+    transform: scale(1.04);
+
+    @include media-breakpoint-down(md){
+      transform: none;
+    }
+  }
