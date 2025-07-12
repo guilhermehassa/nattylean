@@ -1,2 +1,16 @@
 @import 'variables';
+@import 'mixins';
 @import '../../node_modules/bootstrap/scss/bootstrap';
+@import 'video';
+
+.vsl{
+
+  .video{
+    background-color: $primary;
+  }
+
+  .references{
+  
+  }
+
+}

@@ -1,0 +1,99 @@
+// Estilos para controles customizados do vídeo (estilo YouTube)
+.customVideo{
+  &_wrapper{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    background: #000;
+    overflow: hidden;
+    
+    video{
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+  &_controls{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 80%, rgba(0,0,0,0));
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    
+    &-left,&-right {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      .btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: torem(16);
+        padding: 0.2rem 0.5rem;
+        min-width: unset;
+        min-height: unset;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s;
+        pointer-events: auto;
+
+        @include media-breakpoint-up(lg) {
+          font-size: torem(22);
+        }
+        
+        &:active, &:focus {
+          color: #ffd600;
+          outline: none;
+        }
+
+        &:hover {
+          color: #ffd600;
+        }
+      }
+    }
+  }
+
+  &_progress{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10px;
+    background: rgba(83, 83, 83, 0.35);
+    z-index: 10;
+    pointer-events: none;
+    overflow: hidden;
+
+    &-fill {
+      position: relative;
+      top: 0; left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #e80f0f 0%, #a20c0c 100%);
+      width: 0%;
+      transition: width 0.2s linear;
+      pointer-events: none;
+    }
+  }
+
+  &_wrapper.show-controls {
+    .customVideo_controls {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
+

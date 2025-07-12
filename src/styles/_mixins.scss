@@ -1,0 +1,18 @@
+@function torem($value, $base: 16) {
+  $is-negative: false;
+  $num: $value;
+
+  @if type-of($value) == 'string' and str-slice($value, -2) == 'px' {
+    $num: str-slice($value, 1, str-length($value) - 2);
+  }
+
+  $num: if(type-of($num) == 'string', str-to-number($num), $num);
+
+  @if $num < 0 {
+    $is-negative: true;
+    $num: abs($num);
+  }
+
+  $rem-value: $num / $base * 1rem;
+  @return if($is-negative, -$rem-value, $rem-value);
+}
