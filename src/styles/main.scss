@@ -1,3 +1,4 @@
+
 @import 'variables';
 @import 'mixins';
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -5,12 +6,46 @@
 
 .vsl{
 
-  .video{
-    background-color: $primary;
+  .arrow{
+    position: relative;
+    &::after, &:before{
+      content: " ";
+      display: block;
+      background-color: $secondary-dark;
+      border: 3px solid $secondary-dark;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      border-radius: 6px;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  .videoSection{
+    background-color: $primary-dark;
   }
 
   .references{
-  
+    ol{
+      li{
+        span{
+          color: #919191;
+        }
+      }
+    }
+  }
+
+  .countdown{
+    background-color: $secondary-dark;
+
+    &_display{
+      width: 180px;
+      text-align: center;
+      background-color: #000;
+      border-radius: 20px;
+    }
   }
 
 }
