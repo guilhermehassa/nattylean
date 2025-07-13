@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let controlsTimeout;
   const videoCurrentTime = localStorage.getItem('videoCurrentTime');
 
+  //Tempo que o vídeo deve começar
   if (videoCurrentTime) {
     video.currentTime = parseFloat(videoCurrentTime);
     video.play(); 
@@ -26,20 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
     skipToTimeBtn.addEventListener('click', function() {
       const video = document.getElementById('mainVideo');
       if (video) {
-        video.currentTime = 60 * (29.58); 
+        video.currentTime = (60 * 20) + 13; 
         video.play();
       }
     });
   }
 
-  // Reiniciar vídeo ao clicar no botão de reinício
   if (restartVideoBtn && video) {
     restartVideoBtn.addEventListener('click', function() {
       video.currentTime = 0;
       video.play();
       restartVideoBtn.classList.add('d-none');
     });
-    // Esconde o botão sempre que o vídeo for reproduzido
     video.addEventListener('play', function() {
       restartVideoBtn.classList.add('d-none');
     });
@@ -146,28 +145,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function startCountdowns() {
-    var countdownDisplays = document.querySelectorAll('#countdownDisplay');
-    if (countdownDisplays) {
-      countdownDisplays.forEach(countdownDisplay => {
-        var totalSeconds = 20 * 60;
-        function updateCountdown() {
-          var minutes = Math.floor(totalSeconds / 60);
-          var seconds = totalSeconds % 60;
-          countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-          
-          if (totalSeconds > 0) {
-            totalSeconds--;
-          } else {
-            clearInterval(timer);
-            countdownDisplay.textContent = '00:00';
-            countdownDisplay.style.animation = '';
-          }
-        }
-        updateCountdown();
-        var timer = setInterval(updateCountdown, 1000);
-      });
+function startCountdowns() {
+  var countdownDisplays = document.querySelectorAll('#countdownDisplay');
+  const COUNTDOWN_DURATION = 20 * 60;
+  // Salva o timestamp de início se não existir
+  let countdownStart = localStorage.getItem('countdownStart');
+  if (!countdownStart) {
+    countdownStart = Date.now();
+    localStorage.setItem('countdownStart', countdownStart);
+  } else {
+    countdownStart = parseInt(countdownStart);
+    if (isNaN(countdownStart)) {
+      countdownStart = Date.now();
+      localStorage.setItem('countdownStart', countdownStart);
     }
   }
+  if (countdownDisplays) {
+    countdownDisplays.forEach(countdownDisplay => {
+      function renderCountdown() {
+        const now = Date.now();
+        let elapsed = Math.floor((now - countdownStart) / 1000);
+        let totalSeconds = COUNTDOWN_DURATION - elapsed;
+        if (totalSeconds < 0) totalSeconds = 0;
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+        countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        if (totalSeconds === 0) {
+          clearInterval(timer);
+        }
+      }
+      renderCountdown();
+      var timer = setInterval(renderCountdown, 1000);
+    });
+  }
+}
 
 });
