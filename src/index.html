@@ -74,7 +74,7 @@
         <div class="container">
           <div class="row justify-content-center gy-4">
             <div class="col-12 col-md-4 order-3 order-md-1">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Two Bottles">
                 <h4 class="mb-1">Try Two</h4>
                 <div class="text-muted mb-2">60 Days, 2 Bottles</div>
                 <img src="img/img-2-bottles.webp" alt="2 Bottles" class="img-fluid mb-3">
@@ -88,7 +88,7 @@
             </div>
             <!-- 6 Potes (Desktop: centro, Mobile: primeiro) -->
             <div class="col-12 col-md-4 order-1 order-md-2">
-              <div class="offer-card offer-card--best text-center">
+              <div class="offer-card offer-card--best text-center" data-name="Six Bottles">
                 <h4 class="mb-1">Best Value</h4>
                 <div class="text-muted mb-2">180 Days, 6 Bottles</div>
                 <img src="img/img-6-bottles.webp" alt="6 Bottles" class="img-fluid mb-3">
@@ -103,7 +103,7 @@
             </div>
             <!-- 3 Potes (Desktop: direita, Mobile: meio) -->
             <div class="col-12 col-md-4 order-2 order-md-3">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Three Bottles">
                 <h4 class="mb-1">Good Value</h4>
                 <div class="text-muted mb-2">90 Days, 3 Bottles</div>
                 <img src="img/img-3-bottles.webp" alt="3 Bottles" class="img-fluid mb-3">
@@ -165,7 +165,7 @@
         <div class="container">
           <div class="row justify-content-center gy-4">
             <div class="col-12 col-md-4 order-3 order-md-1">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Two Bottles">
                 <h4 class="mb-1">Try Two</h4>
                 <div class="text-muted mb-2">60 Days, 2 Bottles</div>
                 <img src="img/img-2-bottles.webp" alt="2 Bottles" class="img-fluid mb-3">
@@ -179,7 +179,7 @@
             </div>
             <!-- 6 Potes (Desktop: centro, Mobile: primeiro) -->
             <div class="col-12 col-md-4 order-1 order-md-2">
-              <div class="offer-card offer-card--best text-center">
+              <div class="offer-card offer-card--best text-center" data-name="Six Bottles">
                 <h4 class="mb-1">Best Value</h4>
                 <div class="text-muted mb-2">180 Days, 6 Bottles</div>
                 <img src="img/img-6-bottles.webp" alt="6 Bottles" class="img-fluid mb-3">
@@ -194,7 +194,7 @@
             </div>
             <!-- 3 Potes (Desktop: direita, Mobile: meio) -->
             <div class="col-12 col-md-4 order-2 order-md-3">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Three Bottles">
                 <h4 class="mb-1">Good Value</h4>
                 <div class="text-muted mb-2">90 Days, 3 Bottles</div>
                 <img src="img/img-3-bottles.webp" alt="3 Bottles" class="img-fluid mb-3">
@@ -328,7 +328,7 @@
         <div class="container">
           <div class="row justify-content-center gy-4">
             <div class="col-12 col-md-4 order-3 order-md-1">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Two Bottles">
                 <h4 class="mb-1">Try Two</h4>
                 <div class="text-muted mb-2">60 Days, 2 Bottles</div>
                 <img src="img/img-2-bottles.webp" alt="2 Bottles" class="img-fluid mb-3">
@@ -342,7 +342,7 @@
             </div>
             <!-- 6 Potes (Desktop: centro, Mobile: primeiro) -->
             <div class="col-12 col-md-4 order-1 order-md-2">
-              <div class="offer-card offer-card--best text-center">
+              <div class="offer-card offer-card--best text-center" data-name="Six Bottles">
                 <h4 class="mb-1">Best Value</h4>
                 <div class="text-muted mb-2">180 Days, 6 Bottles</div>
                 <img src="img/img-6-bottles.webp" alt="6 Bottles" class="img-fluid mb-3">
@@ -357,7 +357,7 @@
             </div>
             <!-- 3 Potes (Desktop: direita, Mobile: meio) -->
             <div class="col-12 col-md-4 order-2 order-md-3">
-              <div class="offer-card text-center">
+              <div class="offer-card text-center" data-name="Three Bottles">
                 <h4 class="mb-1">Good Value</h4>
                 <div class="text-muted mb-2">90 Days, 3 Bottles</div>
                 <img src="img/img-3-bottles.webp" alt="3 Bottles" class="img-fluid mb-3">
@@ -475,6 +475,33 @@
       </div>
     </section>
   </main>
+  <!-- Popup de Compra -->
+  <div id="buyNowModal" class="buy-now-modal" style="display:none;">
+    <div class="buy-now-modal__overlay"></div>
+    <div class="buy-now-modal__content">
+      <button class="buy-now-modal__close" id="closeBuyNowModal" aria-label="Fechar">&times;</button>
+      <h2 class="buy-now-modal__title">
+        <span id="modalProductName"></span> - 
+        <span id="modalProductPrice"></span>
+      </h2>
+      <form id="buyNowForm" autocomplete="off">
+        <div class="form-group">
+          <label for="buyerName">Name</label>
+          <input type="text" id="buyerName" name="buyerName" required>
+        </div>
+        <div class="form-group">
+          <label for="buyerEmail">Email</label>
+          <input type="email" id="buyerEmail" name="buyerEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="buyerPhone">Phone</label>
+          <input type="tel" id="buyerPhone" name="buyerPhone" required pattern="[0-9()+\-\s]+">
+        </div>
+        <button type="submit" class="btn btn-secondary fs-3 text-white w-100 fw-bolder">BUY</button>
+      </form>
+    </div>
+  </div>
+
   <footer class="footer bg-secondary text-white py-5 text-center">
     <div class="container">
       <div class="row justify-content-center">

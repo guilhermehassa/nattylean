@@ -1,0 +1,83 @@
+.buy-now-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buy-now-modal__overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+.buy-now-modal__content {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 500px;
+  max-width: 95vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.buy-now-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+}
+.buy-now-modal__title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.buy-now-modal__product-info {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#modalProductName {
+  font-weight: 600;
+}
+#modalProductPrice {
+  color: #198754;
+  font-weight: 300;
+}
+#buyNowForm .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+#buyNowForm label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+#buyNowForm input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+#buyNowForm button[type="submit"] {
+  margin-top: 0.5rem;
+}
+
+.input-error {
+  border-color: #dc3545 !important;
+  background: #fff0f0;
+}
+.input-error-msg {
+  color: #dc3545;
+  font-size: 0.95em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
