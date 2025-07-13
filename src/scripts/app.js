@@ -1,7 +1,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+  const skipToTimeBtn = document.getElementById('skipToTimeBtn');
+  if (skipToTimeBtn) {
+    skipToTimeBtn.addEventListener('click', function() {
+      const video = document.getElementById('mainVideo');
+      skipToTimeBtn.style.display = 'none'; 
+      if (video) {
+        video.currentTime = 60 * (20.13); 
+        video.play();
+      }
+    });
+  }
 
   // Controles customizados do vídeo
+  const hiddenContent = document.getElementById('hiddenContent');
   const video = document.getElementById('mainVideo');
   const playPauseBtn = document.getElementById('playPauseBtn');
   const playPauseIcon = document.getElementById('playPauseIcon');
@@ -10,6 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const videoWrapper = document.querySelector('.customVideo_wrapper');
   let controlsTimeout;
+
+  function toggleHiddenContent() {
+    if (!hiddenContent.classList.contains('hiddenContent-open')) {
+      hiddenContent.style.display = 'block';
+      startCountdowns();
+
+      setTimeout(() => {
+        hiddenContent.classList.add('hiddenContent-open');
+      }, 200);
+    }
+  }
 
   function showControls() {
     videoWrapper.classList.add('show-controls');
@@ -30,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Inicialmente mostra controles
   showControls();
-
 
   if (video && playPauseBtn && muteBtn && fullscreenBtn) {
     // Play/Pause toggle pelo botão
@@ -84,33 +106,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressFill = document.querySelector('.customVideo_progress-fill');
     if (progressFill) {
       video.addEventListener('timeupdate', function() {
-      const percent = (video.currentTime / video.duration) * 100;
-      progressFill.style.width = percent + '%';
+        const percent = (video.currentTime / video.duration) * 100;
+        progressFill.style.width = percent + '%';
+        if(video.currentTime >= (60*20.14)){
+          toggleHiddenContent();
+        }
       });
     }
   }
 
-
-  var countdownDisplays = document.querySelectorAll('#countdownDisplay');
-  if (countdownDisplays) {
-    countdownDisplays.forEach(countdownDisplay => {
-      var totalSeconds = 20 * 60;
-      function updateCountdown() {
-        var minutes = Math.floor(totalSeconds / 60);
-        var seconds = totalSeconds % 60;
-        countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        
-        if (totalSeconds > 0) {
-          totalSeconds--;
-        } else {
-          clearInterval(timer);
-          countdownDisplay.textContent = '00:00';
-          countdownDisplay.style.animation = '';
+  function startCountdowns() {
+    var countdownDisplays = document.querySelectorAll('#countdownDisplay');
+    if (countdownDisplays) {
+      countdownDisplays.forEach(countdownDisplay => {
+        var totalSeconds = 20 * 60;
+        function updateCountdown() {
+          var minutes = Math.floor(totalSeconds / 60);
+          var seconds = totalSeconds % 60;
+          countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          
+          if (totalSeconds > 0) {
+            totalSeconds--;
+          } else {
+            clearInterval(timer);
+            countdownDisplay.textContent = '00:00';
+            countdownDisplay.style.animation = '';
+          }
         }
-      }
-      updateCountdown();
-      var timer = setInterval(updateCountdown, 1000);
-    });
+        updateCountdown();
+        var timer = setInterval(updateCountdown, 1000);
+      });
+    }
   }
 
 });
