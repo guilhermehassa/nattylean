@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const skipToTimeBtn = document.getElementById('skipToTimeBtn');
+  const restartVideoBtn = document.getElementById('restartVideoBtn');
   const hiddenContent = document.getElementById('hiddenContent');
   const video = document.getElementById('mainVideo');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -25,9 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
     skipToTimeBtn.addEventListener('click', function() {
       const video = document.getElementById('mainVideo');
       if (video) {
-        video.currentTime = 60 * (20.13); 
+        video.currentTime = 60 * (29.58); 
         video.play();
       }
+    });
+  }
+
+  // Reiniciar vídeo ao clicar no botão de reinício
+  if (restartVideoBtn && video) {
+    restartVideoBtn.addEventListener('click', function() {
+      video.currentTime = 0;
+      video.play();
+      restartVideoBtn.classList.add('d-none');
+    });
+    // Esconde o botão sempre que o vídeo for reproduzido
+    video.addEventListener('play', function() {
+      restartVideoBtn.classList.add('d-none');
     });
   }
     
@@ -123,6 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+
+    // Exibe botão de reinício ao terminar o vídeo
+    video.addEventListener('ended', function() {
+      if (restartVideoBtn) {
+        restartVideoBtn.classList.remove('d-none');
+      }
+    });
   }
 
   function startCountdowns() {

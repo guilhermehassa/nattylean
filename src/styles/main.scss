@@ -71,4 +71,17 @@
     transform: translateX(-50%);
     z-index: 9999;
   }
+
+  .restart-video-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
