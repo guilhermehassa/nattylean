@@ -1,0 +1,33 @@
+.guarantee{
+  .container{
+    background-color: $primary-dark;
+  }
+  h3{
+    color: $secondary-light;
+  }
+
+  &_icon{
+    img{
+      display: block;
+      max-width: 200px;
+    }
+  }
+
+  &_badges{
+    img{
+      max-width: 20%;
+
+      @include media-breakpoint-up(lg){
+        max-width: 80px;
+        margin: 0 20px;
+      }
+    }
+  }
+
+  &_text{
+    p{
+      vertical-align: middle;
+      margin: 0;
+    }
+  }
+}
