@@ -1,18 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const skipToTimeBtn = document.getElementById('skipToTimeBtn');
-  if (skipToTimeBtn) {
-    skipToTimeBtn.addEventListener('click', function() {
-      const video = document.getElementById('mainVideo');
-      skipToTimeBtn.style.display = 'none'; 
-      if (video) {
-        video.currentTime = 60 * (20.13); 
-        video.play();
-      }
-    });
-  }
-
-  // Controles customizados do vídeo
   const hiddenContent = document.getElementById('hiddenContent');
   const video = document.getElementById('mainVideo');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -22,13 +10,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   const videoWrapper = document.querySelector('.customVideo_wrapper');
   let controlsTimeout;
+  const videoCurrentTime = localStorage.getItem('videoCurrentTime');
 
+  if (videoCurrentTime) {
+    video.currentTime = parseFloat(videoCurrentTime);
+    video.play(); 
+  }else{
+    video.currentTime = 0;
+    localStorage.setItem('videoCurrentTime', 0);
+    video.play();
+  }
+
+   if (skipToTimeBtn) {
+    skipToTimeBtn.addEventListener('click', function() {
+      const video = document.getElementById('mainVideo');
+      if (video) {
+        video.currentTime = 60 * (20.13); 
+        video.play();
+      }
+    });
+  }
+    
   function toggleHiddenContent() {
     if (!hiddenContent.classList.contains('hiddenContent-open')) {
       hiddenContent.style.display = 'block';
       startCountdowns();
 
       setTimeout(() => {
+        skipToTimeBtn.style.display = 'none'; 
         hiddenContent.classList.add('hiddenContent-open');
       }, 200);
     }
@@ -102,12 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Atualiza a barra de progresso conforme o tempo do vídeo
+    // AÇÕES CONFORME O PROGRESSO DO VÍDEO
     const progressFill = document.querySelector('.customVideo_progress-fill');
     if (progressFill) {
       video.addEventListener('timeupdate', function() {
         const percent = (video.currentTime / video.duration) * 100;
         progressFill.style.width = percent + '%';
+        localStorage.setItem('videoCurrentTime', video.currentTime);
         if(video.currentTime >= (60*20.14)){
           toggleHiddenContent();
         }
