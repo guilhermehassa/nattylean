@@ -13,8 +13,8 @@
     &::after, &:before{
       content: " ";
       display: block;
-      background-color: $secondary-dark;
-      border: 3px solid $secondary-dark;
+      background-color: $secondary;
+      border: 3px solid $secondary;
       width: 40px;
       height: 40px;
       position: absolute;
@@ -40,12 +40,16 @@
   }
 
   .countdown{
-    background-color: $secondary-dark;
+    background-color: $secondary;
     &_display{
-      width: 180px;
+      width: 100%;
       text-align: center;
       background-color: #000;
       border-radius: 20px;
     }
+  }
+
+  .faqSection{
+    background-color: $primary-light;
   }
 }
