@@ -91,24 +91,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  var countdownDisplay = document.getElementById('countdownDisplay');
-  if (countdownDisplay) {
-    var totalSeconds = 20 * 60;
-    function updateCountdown() {
-      var minutes = Math.floor(totalSeconds / 60);
-      var seconds = totalSeconds % 60;
-      countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
-      if (totalSeconds > 0) {
-        totalSeconds--;
-      } else {
-        clearInterval(timer);
-        countdownDisplay.textContent = '00:00';
-        countdownDisplay.style.animation = '';
+  var countdownDisplays = document.querySelectorAll('#countdownDisplay');
+  if (countdownDisplays) {
+    countdownDisplays.forEach(countdownDisplay => {
+      var totalSeconds = 20 * 60;
+      function updateCountdown() {
+        var minutes = Math.floor(totalSeconds / 60);
+        var seconds = totalSeconds % 60;
+        countdownDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (totalSeconds > 0) {
+          totalSeconds--;
+        } else {
+          clearInterval(timer);
+          countdownDisplay.textContent = '00:00';
+          countdownDisplay.style.animation = '';
+        }
       }
-    }
-    updateCountdown();
-    var timer = setInterval(updateCountdown, 1000);
+      updateCountdown();
+      var timer = setInterval(updateCountdown, 1000);
+    });
   }
 
 });
