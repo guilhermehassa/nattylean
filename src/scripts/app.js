@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const skipToTimeBtn = document.getElementById('skipToTimeBtn');
   const restartVideoBtn = document.getElementById('restartVideoBtn');
@@ -64,20 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3000);
   }
 
-  // Mostra controles em qualquer interação
+  
   ['mousemove', 'touchstart', 'click'].forEach(evt => {
     videoWrapper.addEventListener(evt, showControls);
   });
 
-  // Mostra controles ao pausar/play também
+  
   video.addEventListener('play', showControls);
   video.addEventListener('pause', showControls);
 
-  // Inicialmente mostra controles
+  
   showControls();
 
   if (video && playPauseBtn && muteBtn && fullscreenBtn) {
-    // Play/Pause toggle pelo botão
+    // Play/Pause
     playPauseBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       if (video.paused) {
@@ -86,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         video.pause();
       }
     });
-    // Play/Pause ao clicar no vídeo (mas não nos botões)
+    
     video.addEventListener('click', function(e) {
-      // Se o clique for em um botão, não faz nada
+      
       if (e.target.closest('.customVideo_controls .btn')) return;
       if (video.paused) {
         video.play();
@@ -103,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playPauseIcon.textContent = '►';
     });
 
-    // Mute/Unmute toggle
+    
     muteBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       video.muted = !video.muted;
@@ -112,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       muteIcon.textContent = video.muted ? '🔇' : '🔊';
     });
 
-    // Fullscreen
+    
     fullscreenBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       if (video.requestFullscreen) {
@@ -137,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Exibe botão de reinício ao terminar o vídeo
+    
     video.addEventListener('ended', function() {
       if (restartVideoBtn) {
         restartVideoBtn.classList.remove('d-none');
@@ -180,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Seleciona todos os botões BUY NOW
+  
   const buyNowButtons = document.querySelectorAll('.offer-card__btn');
   const modal = document.getElementById('buyNowModal');
   const closeModalBtn = document.getElementById('closeBuyNowModal');
@@ -189,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalProductImage = document.getElementById('modalProductImage');
   const buyNowForm = document.getElementById('buyNowForm');
 
-  // Função para abrir o modal
+  
   function openBuyNowModal(productName, productPrice, productImage) {
     modalProductName.textContent = productName;
     modalProductPrice.textContent = productPrice;
@@ -197,22 +196,22 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
-  // Função para fechar o modal
+  
   function closeBuyNowModal() {
     modal.style.display = 'none';
     document.body.style.overflow = '';
   }
-  // Adiciona evento de fechar
+  
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeBuyNowModal);
   if (modal) modal.addEventListener('click', function(e) {
     if (e.target === modal) closeBuyNowModal();
   });
 
-  // Adiciona evento aos botões BUY NOW
+  
   buyNowButtons.forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      // Busca nome e preço do produto
+      
       const card = btn.closest('.offer-card');
       let name = card.getAttribute('data-name') || 'Produto';
       let price = card.querySelector('.offer-card__total span')?.textContent?.trim() || '';
@@ -221,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Máscara de telefone (padrão EUA: (XXX) XXX-XXXX)
+  
   const phoneInput = document.getElementById('buyerPhone');
   if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
@@ -239,11 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Função para validar email
+  
   function isValidEmail(email) {
     return /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(email);
   }
-  // Função para validar telefone (padrão EUA: (XXX) XXX-XXXX)
+  
   function isValidUSPhone(phone) {
     return /^\(\d{3}\) \d{3}-\d{4}$/.test(phone);
   }
