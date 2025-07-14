@@ -186,12 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModalBtn = document.getElementById('closeBuyNowModal');
   const modalProductName = document.getElementById('modalProductName');
   const modalProductPrice = document.getElementById('modalProductPrice');
+  const modalProductImage = document.getElementById('modalProductImage');
   const buyNowForm = document.getElementById('buyNowForm');
 
   // Função para abrir o modal
-  function openBuyNowModal(productName, productPrice) {
+  function openBuyNowModal(productName, productPrice, productImage) {
     modalProductName.textContent = productName;
     modalProductPrice.textContent = productPrice;
+    modalProductImage.src = productImage;
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
@@ -212,10 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       // Busca nome e preço do produto
       const card = btn.closest('.offer-card');
-      console.log(card);
       let name = card.getAttribute('data-name') || 'Produto';
       let price = card.querySelector('.offer-card__total span')?.textContent?.trim() || '';
-      openBuyNowModal(name, price);
+      let image = card.querySelector('img')?.src || '';
+      openBuyNowModal(name, price, image);
     });
   });
 
@@ -254,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = document.getElementById('buyerPhone').value.trim();
       const product = modalProductName.textContent;
       const price = modalProductPrice.textContent;
-
+      const image = modalProductImage.src;
 
       // Remove mensagens de erro antigas
       document.querySelectorAll('.input-error-msg').forEach(el => el.remove());
@@ -285,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hasError) return;
 
       // Redireciona para página de obrigado (pode passar dados via query string)
-      const params = new URLSearchParams({ name, email, phone, product, price });
+      const params = new URLSearchParams({ name, email, phone, product, price, image });
       window.location.href = 'thankyou.html?' + params.toString();
     });
   }
