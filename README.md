@@ -8,6 +8,7 @@ O projeto está publicado em: [https://hassa.dev.br/hew/](https://hassa.dev.br/h
 Guilherme Hassã
 
 ## Estrutura do Projeto
+```
 nattylean/
 ├── src/
 │   ├── *.html
