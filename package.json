@@ -9,9 +9,9 @@
   },
   "scripts": {
     "build-css": "sass --quiet-deps src/styles/main.scss dist/styles/main.css",
-    "copy-html": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist; Copy-Item src/index.html dist/\"",
+    "copy-html": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist; Copy-Item src/*.html dist/\"",
     "copy-js": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist/scripts; Copy-Item src/scripts/* dist/scripts/\"",
-    "copy-assets": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist/styles\"",
+    "copy-assets": "powershell -Command \"New-Item -ItemType Directory -Force -Path dist/styles; New-Item -ItemType Directory -Force -Path dist/img; New-Item -ItemType Directory -Force -Path dist/video; Copy-Item src/img/* dist/img/; Copy-Item src/video/* dist/video/\"",
     "clean": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }\"",
     "prebuild": "yarn clean && yarn copy-assets",
     "build": "yarn prebuild && yarn build-css && yarn copy-html && yarn copy-js",
